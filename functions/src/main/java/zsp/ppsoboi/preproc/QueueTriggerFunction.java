@@ -33,9 +33,9 @@ public class QueueTriggerFunction {
                     RawJobView message,
             final ExecutionContext context
     ) {
-        context.getLogger().info(String.format("Processing job '%s'...", message.getName()));
-
         try {
+            context.getLogger().info(String.format("Processing job '%s'...", message.getName()));
+
             final ProcessedJobView processedJob = new ProcessedJobView();
             processedJob.setName(parseName(message.getName()));
             processedJob.setMinSalary(parseMinSalary(message.getSalary()));
@@ -108,6 +108,17 @@ public class QueueTriggerFunction {
         private String place;
         private String employer;
         private String description;
+
+        public RawJobView() {
+        }
+
+        public RawJobView(final String name, final String salary, final String place, final String employer, final String description) {
+            this.name = name;
+            this.salary = salary;
+            this.place = place;
+            this.employer = employer;
+            this.description = description;
+        }
 
         public String getName() {
             return name;

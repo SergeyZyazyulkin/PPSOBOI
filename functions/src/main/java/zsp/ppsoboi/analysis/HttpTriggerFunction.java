@@ -33,7 +33,7 @@ public class HttpTriggerFunction {
 
 
     /**
-     * This function listens at endpoint "/api/HttpExample". Two ways to invoke it using "curl" command in bash:
+     * This function listens at endpoint "/api/analysis". Two ways to invoke it using "curl" command in bash:
      * 1. curl -d "HTTP Body" {your host}/api/HttpExample
      * 2. curl "{your host}/api/HttpExample?name=HTTP%20Query"
      */
@@ -80,6 +80,14 @@ public class HttpTriggerFunction {
 
         private String field;
         private Integer limit;
+
+        public Request() {
+        }
+
+        public Request(final String field, final Integer limit) {
+            this.field = field;
+            this.limit = limit;
+        }
 
         public String getField() {
             return field;
